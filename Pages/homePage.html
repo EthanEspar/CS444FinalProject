@@ -1,13 +1,36 @@
 <!--This page will be a starting point where the user can transverse to other pages -->
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Home Page</title>
-    <meta charset="UTF-8">
-    <script src="script.js"></script>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <head>
+        <title>Home Page</title>
+        <meta charset="UTF-8">
+        <script src="script.js"></script>
+        <link rel="stylesheet" href="../styles.css">
+    </head>
 
-</body>
+    <body>
+        <header>
+            <nav>
+                <button onclick="window.location.href='homePage.html'">Home</button>
+                <button onclick="window.location.href='forums.html'">Forums</button>
+                <button onclick="window.location.href='search.html'">Search</button>
+                <button onclick="window.location.href='profile.html'">Profile</button>
+            </nav>
+        </header>
+        
+        <main>
+            <h1>Welcome to the Home Page</h1>
+            <p>Use the navigation buttons above to explore the site.</p>
+            
+            <h2>Game Forums</h2>
+            <div class="forum-buttons">
+                <button onclick="window.location.href='GameForums/codForum.html'">Call of Duty Forum</button>
+                <button onclick="window.location.href='GameForums/fortniteForum.html'">Fortnite Forum</button>
+                <button onclick="window.location.href='GameForums/gta6Forum.html'">GTA 6 Forum</button>
+                <button onclick="window.location.href='GameForums/minecraftForum.html'">Minecraft Forum</button>
+                <button onclick="window.location.href='GameForums/noMansSkyForum.html'">No Man's Sky Forum</button>
+                <button onclick="window.location.href='GameForums/terrariaForum.html'">Terraria Forum</button>
+            </div>
+        </main>
+    </body>
 </html>
