@@ -1,24 +1,37 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <title>GTA 6 Forum</title>
     <meta charset="UTF-8">
-    <script src="../script.js"></script>
+    <script src="../../script.js"></script>
     <link rel="stylesheet" href="../../styles.css">
 </head>
 <body>
     <header>
         <nav>
             <button onclick="window.location.href='../homePage.html'">Home</button>
-            <button onclick="window.location.href='../forums.html'">Forums</button>
+            <button class="active" onclick="window.location.href='../forums.html'">Forums</button>
             <button onclick="window.location.href='../search.html'">Search</button>
             <button onclick="window.location.href='../profile.html'">Profile</button>
         </nav>
+        <a class="logo" href="../homePage.html"><span class="logo-placeholder">LOGO</span></a>
     </header>
-    
+
     <main>
-        <h1>GTA 6 Forum</h1>
-        <p>Welcome to the GTA 6 discussion forum!</p>
+        <section class="forum-banner gta6">
+            <h1>GTA 6</h1>
+            <p>News, theories and all things Vice City.</p>
+        </section>
+
+        <div class="section-header">
+            <h2>Threads</h2>
+            <button class="btn-primary">+ New Thread</button>
+        </div>
+
+        <div class="empty-state">
+            <p class="empty-title">No threads yet.</p>
+            <p>Be the first to start a discussion!</p>
+        </div>
     </main>
 </body>
 </html>

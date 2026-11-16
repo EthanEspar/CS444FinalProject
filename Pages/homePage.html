@@ -4,18 +4,19 @@
     <head>
         <title>Home Page</title>
         <meta charset="UTF-8">
-        <script src="script.js"></script>
+        <script src="../script.js"></script>
         <link rel="stylesheet" href="../styles.css">
     </head>
 
     <body>
         <header>
             <nav>
-                <button onclick="window.location.href='homePage.html'">Home</button>
+                <button class="active" onclick="window.location.href='homePage.html'">Home</button>
                 <button onclick="window.location.href='forums.html'">Forums</button>
                 <button onclick="window.location.href='search.html'">Search</button>
                 <button onclick="window.location.href='profile.html'">Profile</button>
             </nav>
+            <a class="logo" href="homePage.html"><span class="logo-placeholder">LOGO</span></a>
         </header>
         
         <main>
@@ -24,12 +25,12 @@
             
             <h2>Game Forums</h2>
             <div class="forum-buttons">
-                <button onclick="window.location.href='GameForums/codForum.html'">Call of Duty Forum</button>
-                <button onclick="window.location.href='GameForums/fortniteForum.html'">Fortnite Forum</button>
-                <button onclick="window.location.href='GameForums/gta6Forum.html'">GTA 6 Forum</button>
-                <button onclick="window.location.href='GameForums/minecraftForum.html'">Minecraft Forum</button>
-                <button onclick="window.location.href='GameForums/noMansSkyForum.html'">No Man's Sky Forum</button>
-                <button onclick="window.location.href='GameForums/terrariaForum.html'">Terraria Forum</button>
+                <button class="forum-card cod" onclick="window.location.href='GameForums/codForum.html'"><span>Call of Duty</span></button>
+                <button class="forum-card fortnite" onclick="window.location.href='GameForums/fortniteForum.html'"><span>Fortnite</span></button>
+                <button class="forum-card gta6" onclick="window.location.href='GameForums/gta6Forum.html'"><span>GTA 6</span></button>
+                <button class="forum-card minecraft" onclick="window.location.href='GameForums/minecraftForum.html'"><span>Minecraft</span></button>
+                <button class="forum-card noMansSky" onclick="window.location.href='GameForums/noMansSkyForum.html'"><span>No Man's Sky</span></button>
+                <button class="forum-card terraria" onclick="window.location.href='GameForums/terrariaForum.html'"><span>Terraria</span></button>
             </div>
         </main>
     </body>

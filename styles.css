@@ -1,37 +1,246 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
+/* ===== Color scheme =====
+   Change these to re-theme the whole site. */
+:root {
+    --bg: #0f1014;            /* page background (near-black) */
+    --surface: #1a1c23;       /* header, panels */
+    --surface-hover: #262935; /* lighter surface for hovers */
+    --text: #e8e8ee;          /* main text */
+    --text-muted: #9a9cab;    /* secondary text */
+    --accent: #8b5cf6;        /* purple accent */
+    --accent-hover: #a78bfa;  /* lighter purple */
 }
 
+body {
+    margin: 0;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+}
+
+h1, h2 {
+    color: var(--text);
+}
+
+p {
+    color: var(--text-muted);
+}
+
+a {
+    color: var(--accent-hover);
+}
+
+/* ===== Header / navigation ===== */
 header {
-    background-color: #333;
-    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* nav on the left, logo on the right */
+    background-color: var(--surface);
+    padding: 1rem 2rem;
+    border-bottom: 2px solid var(--accent);
+}
+
+/* Logo in the top right; clicking it goes home */
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo img {
+    height: 40px; /* keeps any logo image the same height as the nav */
+    width: auto;
+}
+
+/* Temporary stand-in until the real logo is ready */
+.logo-placeholder {
+    padding: 0.4rem 0.9rem;
+    border: 2px dashed var(--accent);
+    border-radius: 6px;
+    color: var(--accent-hover);
+    font-weight: bold;
+    letter-spacing: 0.15em;
 }
 
 nav {
     display: flex;
-    gap: 1rem;
+    gap: 0.5rem;
+}
+
+/* ===== Buttons ===== */
+button {
+    padding: 0.5rem 1rem;
+    background-color: transparent;
+    color: var(--text-muted);
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+button:hover {
+    background-color: var(--surface-hover);
+    color: var(--accent-hover);
+}
+
+/* Nav button for the page you're on */
+nav button.active {
+    background-color: var(--accent);
+    color: white;
+}
+
+nav button.active:hover {
+    background-color: var(--accent-hover);
+    color: white;
 }
 
 main {
     padding: 2rem;
 }
 
-button {
-    padding: 0.5rem 1rem;
-    background-color: #666;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #ff6b35;
-}
-
+/* ===== Game forum cards ===== */
 .forum-buttons {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     gap: 1rem;
     margin-top: 1rem;
+}
+
+/* Game image as background, name centered on top */
+.forum-card {
+    position: relative;
+    height: 150px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-color: var(--surface); /* shown until the image loads */
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+/* Dark layer over the image so the text stays readable */
+.forum-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    transition: background 0.2s ease;
+}
+
+.forum-card span {
+    position: relative; /* sits above the dark layer */
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+.forum-card:hover {
+    background-color: var(--surface);
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(139, 92, 246, 0.35); /* purple glow */
+}
+
+.forum-card:hover::before {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+/* ===== Game images =====
+   Used by both the home page cards and the forum page banners.
+   Paths are relative to this stylesheet, so they point at /images */
+.forum-card.cod,       .forum-banner.cod       { background-image: url("images/cod.jpg"); }
+.forum-card.fortnite,  .forum-banner.fortnite  { background-image: url("images/fortnite.jpg"); }
+.forum-card.gta6,      .forum-banner.gta6      { background-image: url("images/gta6.jpg"); }
+.forum-card.minecraft, .forum-banner.minecraft { background-image: url("images/minecraft.jpg"); }
+.forum-card.noMansSky, .forum-banner.noMansSky { background-image: url("images/noMansSky.jpg"); }
+.forum-card.terraria,  .forum-banner.terraria  { background-image: url("images/terraria.jpg"); }
+
+/* ===== Game forum pages ===== */
+
+/* Big image banner at the top of each forum */
+.forum-banner {
+    position: relative;
+    height: 240px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    border-radius: 12px;
+    border-bottom: 3px solid var(--accent);
+    background-color: var(--surface);
+    background-size: cover;
+    background-position: center;
+}
+
+/* Darker toward the bottom so the text pops */
+.forum-banner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+}
+
+.forum-banner h1,
+.forum-banner p {
+    position: relative; /* sits above the dark layer */
+    margin: 0.25rem 1rem;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+}
+
+.forum-banner h1 {
+    font-size: 2.5rem;
+    color: white;
+}
+
+.forum-banner p {
+    font-size: 1.1rem;
+    color: #d8d8e0;
+}
+
+/* "Threads" title with the New Thread button on the right */
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+/* Filled purple button for main actions */
+.btn-primary {
+    background-color: var(--accent);
+    color: white;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-hover);
+    color: white;
+}
+
+/* Placeholder panel shown when a forum has no threads */
+.empty-state {
+    margin-top: 1rem;
+    padding: 3rem 1rem;
+    text-align: center;
+    background-color: var(--surface);
+    border: 2px dashed var(--surface-hover);
+    border-radius: 12px;
+}
+
+.empty-state p {
+    margin: 0.25rem 0;
+}
+
+.empty-state .empty-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--text);
 }
